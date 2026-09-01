@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cam Plumley — Glow Empire</title>
+    <meta name="description" content="Cam Plumley — Founder of Glow Empire. Web developer, AI builder, truth seeker. Eden, NC.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8941F;
+            --black: #0A0A0A;
+            --black-light: #141414;
+            --gray: #1A1A1A;
+            --gray-light: #2A2A2A;
+            --white: #F5F5F5;
+            --white-dim: #B0B0B0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--white-dim);
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            background: radial-gradient(ellipse at center, var(--gray) 0%, var(--black) 70%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="0.5" fill="%23D4AF37" opacity="0.15"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-glow {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 32px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--black);
+            text-shadow: 0 0 20px var(--gold);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 60px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 100px rgba(212, 175, 55, 0.5); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--white-dim);
+            max-width: 500px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .hero .tagline span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 36px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gray-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: var(--white-dim);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            letter-spacing: -0.5px;
+        }
+
+        /* MEET ME */
+        .meet-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .meet-photo {
+            background: var(--gray);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-dim);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meet-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+        }
+
+        .meet-photo span {
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .meet-info h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .meet-role {
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .meet-info p {
+            font-size: 1.05rem;
+            color: var(--white-dim);
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .meet-info strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .meet-details {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .meet-detail {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .meet-detail-label {
+            color: var(--gold);
+            font-weight: 600;
+            min-width: 80px;
+        }
+
+        .meet-detail-value {
+            color: var(--white-dim);
+        }
+
+        /* ABOUT / WHAT I DO */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--white-dim);
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .about-text strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: var(--gray);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CERTIFICATES */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .cert-card {
+            background: var(--gray);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            padding: 32px;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .cert-icon {
+            min-width: 56px;
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .cert-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .cert-info p {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--gray);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            padding: 36px 28px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--gold);
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--white-dim);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--gray);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            padding: 36px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .project-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--white-dim);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 12px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .skill-badge {
+            background: var(--gray);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white-dim);
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            color: var(--gold);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: radial-gradient(ellipse at center, var(--gray) 0%, var(--black) 70%);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .contact .section-title {
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            max-width: 500px;
+            margin: 0 auto 16px;
+        }
+
+        .contact-email {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 40px;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--gray);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--white-dim);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+        }
+
+        footer .glow {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.95rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .meet-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">GLOW EMPIRE</div>
+        <ul class="nav-links">
+            <li><a href="#meet" data-scroll>Meet Me</a></li>
+            <li><a href="#about" data-scroll>About</a></li>
+            <li><a href="#certs" data-scroll>Certifications</a></li>
+            <li><a href="#services" data-scroll>Services</a></li>
+            <li><a href="#work" data-scroll>Work</a></li>
+            <li><a href="#contact" data-scroll>Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-glow">GE</div>
+        <h1>Cam Plumley</h1>
+        <p class="tagline">
+            Founder of <span>Glow Empire</span>. Web developer, AI builder, and truth seeker building the future from Eden, NC.
+        </p>
+        <div class="hero-cta">
+            <a href="#work" data-scroll class="btn btn-primary">View My Work</a>
+            <a href="#contact" data-scroll class="btn btn-outline">Get In Touch</a>
+        </div>
+        <div class="scroll-indicator">Scroll ↓</div>
+    </div>
+
+    <!-- MEET ME -->
+    <section id="meet">
+        <div class="section-label">Meet Me</div>
+        <h2 class="section-title">Get To Know Cam</h2>
+        <div class="meet-grid">
+            <div class="meet-photo">
+                <span>Photo Coming Soon</span>
+            </div>
+            <div class="meet-info">
+                <h3>Cameron Plumley</h3>
+                <p class="meet-role">Founder & Builder — Glow Empire</p>
+                <p>I'm a 20-year-old <strong>developer, AI builder, and entrepreneur</strong> from Eden, North Carolina. I didn't wait for permission to start building — I just started.</p>
+                <p>I founded <strong>Glow Empire</strong> as a movement around technology, consciousness, and independent creation. Everything I build is rooted in one belief: the truth exists in the connections between things, not in the things themselves.</p>
+                <p>When I'm not building websites for local businesses or developing AI applications, I'm studying the connections between ancient knowledge, frequency, and modern technology. I believe in <strong>creating, not consuming</strong> — and I'd rather earn it than ask for it.</p>
+                <div class="meet-details">
+                    <div class="meet-detail">
+                        <span class="meet-detail-label">Based in</span>
+                        <span class="meet-detail-value">Eden, NC 27288</span>
+                    </div>
+                    <div class="meet-detail">
+                        <span class="meet-detail-label">Age</span>
+                        <span class="meet-detail-value">20</span>
+                    </div>
+                    <div class="meet-detail">
+                        <span class="meet-detail-label">Focus</span>
+                        <span class="meet-detail-value">Web Development · AI · Digital Marketing</span>
+                    </div>
+                    <div class="meet-detail">
+                        <span class="meet-detail-label">Available</span>
+                        <span class="meet-detail-value">Local & Remote Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / WHAT I DO -->
+    <section id="about">
+        <div class="section-label">What I Do</div>
+        <h2 class="section-title">Builder. Thinker. Creator.</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I build <strong>websites for local businesses</strong> — clean, modern, mobile-responsive sites that help them get found online and look professional. $500 flat, no monthly contracts.</p>
+                <p>I develop <strong>AI-powered applications</strong> — including FindFaster AI, a multi-store product search engine, and custom AI glasses built from scratch with a Raspberry Pi.</p>
+                <p>I'm certified in <strong>Google Digital Marketing</strong> and actively pursuing <strong>software development certifications</strong> covering Java, web architecture, and data structures.</p>
+                <p>I believe in doing the work. Not talking about it — doing it. Every project on this site was built by me, start to finish.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Projects Built</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$500</div>
+                    <div class="stat-label">Per Website Build</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Vision</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs">
+        <div class="section-label">Credentials</div>
+        <h2 class="section-title">Certifications & Education</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <div class="cert-info">
+                    <h3>Google Digital Marketing Certification</h3>
+                    <p>8-course program covering Google Analytics, Google Ads strategy, SEO, email marketing, ROAS, and digital campaign management.</p>
+                    <span class="cert-badge">Completed</span>
+                </div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">💻</div>
+                <div class="cert-info">
+                    <h3>Software Development Certification</h3>
+                    <p>Active program covering Java programming, object-oriented design, data structures, Collections API, web architecture, and the SDLC.</p>
+                    <span class="cert-badge">In Progress</span>
+                </div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">📚</div>
+                <div class="cert-info">
+                    <h3>Web Development Foundations</h3>
+                    <p>HTML, CSS, JavaScript, React, front-end and back-end architecture, semantic versioning, and software quality principles.</p>
+                    <span class="cert-badge">In Progress</span>
+                </div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🤖</div>
+                <div class="cert-info">
+                    <h3>AI & Hardware Integration</h3>
+                    <p>Self-taught: Whisper API, ElevenLabs TTS, Raspberry Pi, REST API integration, and custom AI hardware pipeline design.</p>
+                    <span class="cert-badge">Hands-On</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <div class="section-label">What I Offer</div>
+        <h2 class="section-title">Glow Empire Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🌐</span>
+                <h3>Web Design</h3>
+                <p>Custom, modern websites for local businesses. Mobile-responsive, SEO-ready, contact forms, Google Maps integration. One-time flat fee — no monthly contracts.</p>
+                <div class="service-price">$500</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🔧</span>
+                <h3>Tech Support</h3>
+                <p>PC/Mac tune-ups, virus removal, Wi-Fi setup, smart TV configuration, data transfer. Local house calls in Eden/Reidsville area.</p>
+                <div class="service-price">$25/visit</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🌱</span>
+                <h3>Lawn Care</h3>
+                <p>Mowing, edging, leaf removal, weed pulling, bush trimming. Reliable, clean work for residential properties in Eden/Reidsville.</p>
+                <div class="service-price">$65/lawn</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="work">
+        <div class="section-label">What I've Built</div>
+        <h2 class="section-title">Selected Work</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <span class="project-tag">AI / Web App</span>
+                <h3>FindFaster AI</h3>
+                <p>A multi-store product search engine that compares prices across Amazon, eBay, Walmart, and Best Buy. Built with parallel API calls, result caching, and Amazon affiliate integration. Live at find-faster-ai.com.</p>
+                <a href="https://find-faster-ai.com" target="_blank" class="project-link">View Project →</a>
+            </div>
+            <div class="project-card">
+                <span class="project-tag">AI / Hardware</span>
+                <h3>Glow AI Glasses</h3>
+                <p>Custom AI-powered smart glasses built from scratch using Raspberry Pi Zero 2W, bone conduction transducers, I2S microphones, and a custom AI pipeline (Whisper → AI Brain → ElevenLabs TTS). Total build cost: ~$60.</p>
+                <a href="#" class="project-link">In Development →</a>
+            </div>
+            <div class="project-card">
+                <span class="project-tag">Content / Brand</span>
+                <h3>Glow Empire TikTok</h3>
+                <p>Content pipeline exploring consciousness, frequency, ancient knowledge, and AI philosophy. 5-video series covering the Luminal Realm, the Plumley Equation, and the builder's frequency. @glowempire on TikTok.</p>
+                <a href="https://www.tiktok.com/@glowempire" target="_blank" class="project-link">View Account →</a>
+            </div>
+            <div class="project-card">
+                <span class="project-tag">Research</span>
+                <h3>The Plumley Equation</h3>
+                <p>A theoretical framework proposing that dark matter is not a particle but the gravitational effect of electromagnetic field energy curving spacetime. Gravity + Electricity = Dark Matter. Connecting Einstein, Maxwell, and the Gertsenshtein effect.</p>
+                <a href="#" class="project-link">Read More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-label">What I Work With</div>
+        <h2 class="section-title">Skills & Tools</h2>
+        <div class="skills-grid">
+            <div class="skill-badge">HTML / CSS</div>
+            <div class="skill-badge">JavaScript</div>
+            <div class="skill-badge">React</div>
+            <div class="skill-badge">Python</div>
+            <div class="skill-badge">Java</div>
+            <div class="skill-badge">AI Integration</div>
+            <div class="skill-badge">SEO</div>
+            <div class="skill-badge">Digital Marketing</div>
+            <div class="skill-badge">REST APIs</div>
+            <div class="skill-badge">Raspberry Pi</div>
+            <div class="skill-badge">Whisper API</div>
+            <div class="skill-badge">ElevenLabs</div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's Build Something</h2>
+        <p>Need a website, tech support, or want to collaborate? I'm local to Eden/Reidsville, NC and available for projects.</p>
+        <a href="mailto:alexplumley0525@gmail.com" class="contact-email">alexplumley0525@gmail.com</a>
+        <div class="contact-links">
+            <a href="mailto:alexplumley0525@gmail.com" class="contact-link">✉ Email Me</a>
+            <a href="https://www.tiktok.com/@glowempire" target="_blank" class="contact-link">📱 TikTok</a>
+            <a href="https://github.com/Glow-world" target="_blank" class="contact-link">💻 GitHub</a>
+        </div>
+        <a href="mailto:alexplumley0525@gmail.com" class="btn btn-primary">Start a Project</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><span class="glow">GLOW EMPIRE</span> — Built by Cam Plumley. Create. Destroy. Replace. Build.</p>
+    </footer>
+
+    <!-- SMOOTH SCROLL JS -->
+    <script>
+        document.querySelectorAll('[data-scroll]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href');
+                var target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
